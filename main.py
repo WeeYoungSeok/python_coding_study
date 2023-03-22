@@ -309,5 +309,4 @@ print(solution(2, ["cheries2 200", "alex111 100", "coco 150", "puyo 120"]))
 #     return answer
 
 # print(solution(3, [4, 2, 2, 5, 3]))
-
-# test
+# tt
