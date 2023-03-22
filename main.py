@@ -203,79 +203,79 @@
 #         result = i
 # print(time, result)
 
-def bubble_sort(arr):
-    bool = False
-    for i in range(len(arr)):
-        for j in range(len(arr) - 1, 0, -1):
-            if int(arr[j].split()[1]) > int(arr[j - 1].split()[1]):
-                arr[j], arr[j - 1] = arr[j - 1], arr[j]
-                bool = True
-    return bool
+# def bubble_sort(arr):
+#     bool = False
+#     for i in range(len(arr)):
+#         for j in range(len(arr) - 1, 0, -1):
+#             if int(arr[j].split()[1]) > int(arr[j - 1].split()[1]):
+#                 arr[j], arr[j - 1] = arr[j - 1], arr[j]
+#                 bool = True
+#     return bool
 
-def solution(K, user_scores):
-    answer = 0
-    rank = []
+# def solution(K, user_scores):
+#     answer = 0
+#     rank = []
   
-    for i in range(len(user_scores)):
-        if len(rank) == 0:
-            rank.append(user_scores[i])
-            answer += 1
-        else:
-            user_name = user_scores[i].split()[0]
-            user_score = int(user_scores[i].split()[1])
-            bool = False
-            # 기존에 있던 랭크에서 내 이름과 같으면서 갱신 점수가 더 높다면 바꾸어준다.
-            for j in range(len(rank)):
-                rank_name = rank[j].split()[0]
-                rank_score = int(rank[j].split()[1])
-                if rank_name == user_name:
-                    if rank_score < user_score:
-                        rank[j] = user_scores[i]
-                        bool = True
-                        break
-                    elif rank_score >= user_score:
-                        bool = True
-                        break
-            # 기존에 있던 랭크에 내 아이디가 없다면 새로운 사람이 들어온것이다.
-            insert_bool = False
-            if bool == False:
-                check_bool = False
-                for j in range(len(rank)):
-                    rank_name = rank[j].split()[0]
-                    rank_score = int(rank[j].split()[1])
-                    if user_score > rank_score:
-                        rank.insert(j, user_scores[i])
-                        check_bool = True
-                        answer += 1
-                        break     
-                if check_bool == False:
-                    # 맨뒤에 삽입
-                    rank.append(user_scores[i])
-                    insert_bool = True
-            # 해당 행위가 완료되었다면
-            # 버블정렬 시행
-            # 버블 정렬 시행 후 자리가 바꼈다면
-            if bubble_sort(rank) == True:
-                # 자리는 바꼈지만 배열이 더 크다면?
-                if len(rank) > K:
-                    # 랭킹에 들어올수가 없다
-                    rank = rank[0:K]
-                else:
-                    if insert_bool == True or bool == True:
-                        answer += 1
-            else:
-                # 자리는 바꼈지만 배열이 더 크다면?
-                if len(rank) > K:
-                    # 랭킹에 들어올수가 없다
-                    rank = rank[0:K]
-                else:
-                    if insert_bool == True:
-                        answer += 1       
-    return answer
+#     for i in range(len(user_scores)):
+#         if len(rank) == 0:
+#             rank.append(user_scores[i])
+#             answer += 1
+#         else:
+#             user_name = user_scores[i].split()[0]
+#             user_score = int(user_scores[i].split()[1])
+#             bool = False
+#             # 기존에 있던 랭크에서 내 이름과 같으면서 갱신 점수가 더 높다면 바꾸어준다.
+#             for j in range(len(rank)):
+#                 rank_name = rank[j].split()[0]
+#                 rank_score = int(rank[j].split()[1])
+#                 if rank_name == user_name:
+#                     if rank_score < user_score:
+#                         rank[j] = user_scores[i]
+#                         bool = True
+#                         break
+#                     elif rank_score >= user_score:
+#                         bool = True
+#                         break
+#             # 기존에 있던 랭크에 내 아이디가 없다면 새로운 사람이 들어온것이다.
+#             insert_bool = False
+#             if bool == False:
+#                 check_bool = False
+#                 for j in range(len(rank)):
+#                     rank_name = rank[j].split()[0]
+#                     rank_score = int(rank[j].split()[1])
+#                     if user_score > rank_score:
+#                         rank.insert(j, user_scores[i])
+#                         check_bool = True
+#                         answer += 1
+#                         break     
+#                 if check_bool == False:
+#                     # 맨뒤에 삽입
+#                     rank.append(user_scores[i])
+#                     insert_bool = True
+#             # 해당 행위가 완료되었다면
+#             # 버블정렬 시행
+#             # 버블 정렬 시행 후 자리가 바꼈다면
+#             if bubble_sort(rank) == True:
+#                 # 자리는 바꼈지만 배열이 더 크다면?
+#                 if len(rank) > K:
+#                     # 랭킹에 들어올수가 없다
+#                     rank = rank[0:K]
+#                 else:
+#                     if insert_bool == True or bool == True:
+#                         answer += 1
+#             else:
+#                 # 자리는 바꼈지만 배열이 더 크다면?
+#                 if len(rank) > K:
+#                     # 랭킹에 들어올수가 없다
+#                     rank = rank[0:K]
+#                 else:
+#                     if insert_bool == True:
+#                         answer += 1       
+#     return answer
 
-print(solution(3, ["alex111 100", "cheries2 200", "coco 150", "luna 100", "alex111 120", "coco 300", "cheries2 110"]))
-print(solution(3, ["alex111 100", "cheries2 200", "alex111 200", "cheries2 150", "coco 50", "coco 200"]))
-print(solution(2, ["cheries2 200", "alex111 100", "coco 150", "puyo 120"]))
+# print(solution(3, ["alex111 100", "cheries2 200", "coco 150", "luna 100", "alex111 120", "coco 300", "cheries2 110"]))
+# print(solution(3, ["alex111 100", "cheries2 200", "alex111 200", "cheries2 150", "coco 50", "coco 200"]))
+# print(solution(2, ["cheries2 200", "alex111 100", "coco 150", "puyo 120"]))
 
 # from collections import deque
 
@@ -309,4 +309,4 @@ print(solution(2, ["cheries2 200", "alex111 100", "coco 150", "puyo 120"]))
 #     return answer
 
 # print(solution(3, [4, 2, 2, 5, 3]))
-# 잔디 심기
+
