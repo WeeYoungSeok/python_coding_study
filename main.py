@@ -26,10 +26,25 @@
 
 n, k = map(int, input().split())
 
-student_list = list(map(int, input().split()))
+coins = []
+for _ in range(0, n):
+    coins.append(int(input()))
+coins.sort()
 
-answer = 0
+dp = [10001] * (k + 1)
 
-for i in range(0, int(n // k) + 1, k):
-    answer += max(student_list[i:3]) - min(student_list[i:3])
+for i in range(1, k + 1):
+    if coins[0] > i:
+        continue
+    else:
+        for j in range(0, len(coins)):
+            if i % coins[j] == 0:
+                dp[i] = i // coins[j]
+            if i - coins[j] >= 0:
+                if dp[i - coins[j]] != 10001:
+                    dp[i] = min(dp[i], dp[i - coins[j]] + 1)
 
+if dp[k] == 10001:
+    print(-1)
+else:
+    print(dp[k])
