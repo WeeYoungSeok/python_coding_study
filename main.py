@@ -24,27 +24,27 @@
 # from itertools import permutations
 # print(list(permutations(items, 4)))
 
-n, k = map(int, input().split())
+# 시작점과 끝점 2개의 점으로 접근할 데이터의 범위 표현
+# 2, 3, 4, 5, 6, 7 이라고 할떄 2부터 7까지라고 표현
 
-coins = []
-for _ in range(0, n):
-    coins.append(int(input()))
-coins.sort()
+data = [1, 2, 3, 2, 5]
 
-dp = [10001] * (k + 1)
+n = 5
+m = 5
 
-for i in range(1, k + 1):
-    if coins[0] > i:
-        continue
-    else:
-        for j in range(0, len(coins)):
-            if i % coins[j] == 0:
-                dp[i] = i // coins[j]
-            if i - coins[j] >= 0:
-                if dp[i - coins[j]] != 10001:
-                    dp[i] = min(dp[i], dp[i - coins[j]] + 1)
+count = 0
+interval_sum = 0
+end = 0
 
-if dp[k] == 10001:
-    print(-1)
-else:
-    print(dp[k])
+# start를 차례대로 증가시키며 반복
+for start in range(n):
+    # end를 가능한 만큼 이동시키기
+    while interval_sum < m and end < n:
+        interval_sum += data[end]
+        end += 1
+    # 부분합이 m일때 카운트 증가
+    if interval_sum == m:
+        count += 1
+    interval_sum -= data[start]
+
+print(count)
