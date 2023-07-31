@@ -2,16 +2,10 @@
   "files": {
     "main.py": [
       {
-        "id": "3ab021cc-6f7c-4968-80ae-413a9455e9ca",
-        "line": 27,
-        "version": 15142,
-        "index": 558
-      },
-      {
-        "id": "27909e61-94dc-463b-a655-406f6f2009bc",
-        "line": 27,
-        "version": 15142,
-        "index": 558
+        "id": "78a7d9a5-6581-41df-8540-e33fb12d74f6",
+        "line": 32,
+        "version": 16933,
+        "index": 629
       }
     ],
     "two_pointers.py": [
