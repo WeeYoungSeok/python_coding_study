@@ -24,37 +24,54 @@
 # from itertools import permutations
 # print(list(permutations(items, 4)))
 
-def solution(dirs):
-    answer = 0
-    duple = []
-    x, y = 0, 0
+N = int(input())
+K = int(input())
     
-    for dir in dirs:
-        if dir == "R":
-            x += 1
-        elif dir == "L":
-            x -= 1
-        elif dir == "U":
-            y += 1
-        else:
-            y -= 1
-            
-        if x > 5:
-            x = 5
-        elif x < -5:
-            x = -5
-        elif y > 5:
-            y = 5
-        elif y < -5:
-            y = -5
+dal = [[0 for _ in range(N)] for _ in range(N)]
 
-        bool = False
-        for d in duple:
-            if d[0] == x and d[1] == y:
-                bool = True
-        if bool == False:
-            duple.append([x, y])
-            answer += 1
-    return answer
+num = N**2
+x = 0
+y = 0
 
-solution("ULURRDLLU")
+dx = 1
+dy = 1
+
+# 바퀴 수
+t = N - 1
+
+
+while t >= 2:
+    for i in range(4):
+        for j in range(t):
+            dal[x][y] = num
+            if i == 0:
+                x += dx
+            elif i == 1:
+                y += dy
+            elif i == 2:
+                x -= dx
+            elif i == 3:
+                y -= dy
+            num -= 1
+    t -= 2
+    x += 1
+    y += 1
+
+dal[x][y] = 1
+
+result_x = 1
+result_y = 1
+
+for i in range(len(dal)):
+    for j in range(len(dal[i])):
+        if dal[i][j] == K:
+            result_x += i
+            result_y += j
+        print(dal[i][j], end=" ")
+    print()
+
+print(result_x, result_y)
+
+
+a, b, c = map(int, input().split())
+print(a + b + c)
