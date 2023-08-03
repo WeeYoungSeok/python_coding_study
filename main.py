@@ -24,28 +24,58 @@
 # from itertools import permutations
 # print(list(permutations(items, 4)))
 
-a = [1, 2, 3, 4]
-a += [5, 6]
-print(a)
-
 import sys
 input = sys.stdin.readline
 
-s = input().strip()
+T = int(input())
 
-st = []
-i = 0
-temp = []
+for _ in range(T):
+    n, d = map(int, input().split())
+    lst = []
+    for _ in range(n):
+        lst.append(list(map(int, input().split())))
+    
+    if d < 0:
+        d = 360 + d
+        
 
-while i < len(s):
-    if s[i] == "<":
-        while s[i] != ">":
-            st.append(s[i])
-            i += 1
-    else:
-        if s[i] != " ":
-            temp.append(s[i])
-        else:
-            st.append(s[i])
-            temp.reverse()
-            st 
+    new_lst = [[0 for _ in range(n)] for _ in range(n)]
+    
+    while d > 0:
+        x, y = n // 2 - 1, n // 2 - 1
+        i = 3
+        plus = 1
+        while i <= n:
+            for k in range(8):
+                num = lst[x][y]
+                # y 2번 증가
+                if k >= 0 and k < 2:
+                    y += plus
+                # x 2번 증가
+                elif k >= 2 and k < 4:
+                    x += plus
+                # y 2번 감소
+                elif k >= 4 and k < 6:
+                    y -= plus
+                # x 2번 감소
+                elif k >= 6 and k < 8:
+                    x -= plus
+                new_lst[x][y] = num
+            x -= 1
+            y -= 1
+            plus += 1
+            i += 2
+        for a in range(len(lst)):
+            for b in range(len(lst[a])):
+                if new_lst[a][b] == 0:
+                    new_lst[a][b] = lst[a][b]
+        lst = new_lst
+        new_lst = [[0 for _ in range(n)] for _ in range(n)]
+        d -= 45
+
+    for a in range(len(lst)):
+            for b in range(len(lst[a])):
+                print(lst[a][b], end = " ")
+            print()
+
+# n^2 배열 자르기
