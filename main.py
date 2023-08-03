@@ -24,58 +24,66 @@
 # from itertools import permutations
 # print(list(permutations(items, 4)))
 
-import sys
-input = sys.stdin.readline
+# import sys
+# input = sys.stdin.readline
 
-T = int(input())
+# T = int(input())
 
-for _ in range(T):
-    n, d = map(int, input().split())
-    lst = []
-    for _ in range(n):
-        lst.append(list(map(int, input().split())))
+# for _ in range(T):
+#     n, d = map(int, input().split())
+#     lst = []
+#     for _ in range(n):
+#         lst.append(list(map(int, input().split())))
     
-    if d < 0:
-        d = 360 + d
+#     if d < 0:
+#         d = 360 + d
         
 
-    new_lst = [[0 for _ in range(n)] for _ in range(n)]
+#     new_lst = [[0 for _ in range(n)] for _ in range(n)]
     
-    while d > 0:
-        x, y = n // 2 - 1, n // 2 - 1
-        i = 3
-        plus = 1
-        while i <= n:
-            for k in range(8):
-                num = lst[x][y]
-                # y 2번 증가
-                if k >= 0 and k < 2:
-                    y += plus
-                # x 2번 증가
-                elif k >= 2 and k < 4:
-                    x += plus
-                # y 2번 감소
-                elif k >= 4 and k < 6:
-                    y -= plus
-                # x 2번 감소
-                elif k >= 6 and k < 8:
-                    x -= plus
-                new_lst[x][y] = num
-            x -= 1
-            y -= 1
-            plus += 1
-            i += 2
-        for a in range(len(lst)):
-            for b in range(len(lst[a])):
-                if new_lst[a][b] == 0:
-                    new_lst[a][b] = lst[a][b]
-        lst = new_lst
-        new_lst = [[0 for _ in range(n)] for _ in range(n)]
-        d -= 45
+#     while d > 0:
+#         x, y = n // 2 - 1, n // 2 - 1
+#         i = 3
+#         plus = 1
+#         while i <= n:
+#             for k in range(8):
+#                 num = lst[x][y]
+#                 # y 2번 증가
+#                 if k >= 0 and k < 2:
+#                     y += plus
+#                 # x 2번 증가
+#                 elif k >= 2 and k < 4:
+#                     x += plus
+#                 # y 2번 감소
+#                 elif k >= 4 and k < 6:
+#                     y -= plus
+#                 # x 2번 감소
+#                 elif k >= 6 and k < 8:
+#                     x -= plus
+#                 new_lst[x][y] = num
+#             x -= 1
+#             y -= 1
+#             plus += 1
+#             i += 2
+#         for a in range(len(lst)):
+#             for b in range(len(lst[a])):
+#                 if new_lst[a][b] == 0:
+#                     new_lst[a][b] = lst[a][b]
+#         lst = new_lst
+#         new_lst = [[0 for _ in range(n)] for _ in range(n)]
+#         d -= 45
 
-    for a in range(len(lst)):
-            for b in range(len(lst[a])):
-                print(lst[a][b], end = " ")
-            print()
+#     for a in range(len(lst)):
+#             for b in range(len(lst[a])):
+#                 print(lst[a][b], end = " ")
+#             print()
 
 # n^2 배열 자르기
+
+def solution(n, left, right):
+    answer = []
+
+    for i in range(left, right + 1):
+        answer.append(max(i // n, i % n) + 1)
+
+    return answer
