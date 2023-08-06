@@ -1,4 +1,6 @@
 # 치킨 배달
+# baekjoon 15686
+# https://www.acmicpc.net/problem/15686
 
 import sys
 import itertools

@@ -1,3 +1,7 @@
+# 인구 이동
+# baekjoon 16234
+# https://www.acmicpc.net/problem/16234
+
 import sys
 from collections import deque
 import math
