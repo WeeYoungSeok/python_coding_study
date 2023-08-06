@@ -79,34 +79,39 @@
 #             print()
 
 import sys
+import itertools
+
 def input():
     return sys.stdin.readline()
 
-N, K = map(int,input().split())
-num_list = list(map(int,input().split()))
+n, m = map(int, input().split())
 
+data = []
+chicken = []
+city = []
 
+for _ in range(n):
+    data.append(list(map(int, input().split())))
 
-odd_cnt = 0
-ans = 0
-start, end = 0, 0
-size = 0
-flag = 1
+for i in range(len(data)):
+    for j in range(len(data[i])):
+        if data[i][j] == 1:
+            city.append([i, j])
+        elif data[i][j] == 2:
+            chicken.append([i, j])
 
-for s in range(N):
-    while odd_cnt <= K and flag:
-        if num_list[end]%2:
-            if odd_cnt == K:
-                break
-            odd_cnt +=1
-        size += 1
-        if end == N -1:
-            flag = 0
-            break
-        end += 1
-    if ans < size - odd_cnt:
-        ans = size - odd_cnt
-    if num_list[s] % 2:
-        odd_cnt -= 1
-    size -= 1
-print(ans)
+chicken_comb = list(itertools.combinations(chicken, m))
+
+result = 10000
+
+for ch_cm in chicken_comb:
+    city_dist = 0
+    for c in city:
+        dist = 10000
+        for ch in ch_cm:
+            dist = min(dist, abs(c[0] - ch[0]) + abs(c[1] - ch[1]))
+        city_dist += dist
+    result = min(result, city_dist)
+
+print(result)
+        
