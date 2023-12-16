@@ -6,12 +6,13 @@ import sys
 from collections import deque
 import math
 
-
 dx = [0, 0, 1, -1]
 dy = [1, -1, 0, 0]
 
+
 def input():
     return sys.stdin.readline()
+
 
 n, l, r = map(int, input().split())
 
@@ -21,13 +22,14 @@ for _ in range(n):
 
 result = 0
 
+
 def bfs(x, y):
     de = deque()
     de.append((x, y))
     # 연합 국가 들
     union = [(x, y)]
     visited[x][y] = True
-    # 연합 총 수 
+    # 연합 총 수
     count = lst[x][y]
     while de:
         i, j = de.popleft()
@@ -38,8 +40,9 @@ def bfs(x, y):
                 continue
             if visited[nx][ny]:
                 continue
-            if l <= abs(lst[nx][ny] - lst[i][j]) and r >= abs(lst[nx][ny] - lst[i][j]):  
-                # 인구차이 l명 이상, r명 이하인 경우, 연합 국가에 담기 
+            if l <= abs(lst[nx][ny] - lst[i][j]) and r >= abs(lst[nx][ny] -
+                                                              lst[i][j]):
+                # 인구차이 l명 이상, r명 이하인 경우, 연합 국가에 담기
                 union.append((nx, ny))
                 visited[nx][ny] = True
                 de.append((nx, ny))
@@ -47,10 +50,10 @@ def bfs(x, y):
 
     for a, b in union:
         lst[a][b] = math.floor(count / len(union))
-        
+
     return len(union)
-            
-    
+
+
 while True:
     bool = False
     visited = [[False for _ in range(n)] for _ in range(n)]
@@ -64,4 +67,3 @@ while True:
     result += 1
 
 print(result)
-    
