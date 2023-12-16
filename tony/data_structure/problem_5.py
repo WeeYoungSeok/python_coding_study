@@ -1,3 +1,4 @@
+# 생태학
 import sys
 
 input = sys.stdin.readline
