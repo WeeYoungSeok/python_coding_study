@@ -1,3 +1,5 @@
+# 최소 회의실 개수
+
 import sys, heapq
 
 input = sys.stdin.readline
