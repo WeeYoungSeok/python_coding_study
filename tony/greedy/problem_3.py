@@ -1,3 +1,5 @@
+# 블로그2
+
 from itertools import groupby
 
 n = int(input())
@@ -26,4 +28,3 @@ for word in words:
     pre = word
 
 print(1 + min(color_dict["R"], color_dict["B"]))
-        
