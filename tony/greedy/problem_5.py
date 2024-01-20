@@ -1,3 +1,4 @@
+# 회의실 배정
 import sys, heapq
 
 input = sys.stdin.readline
@@ -18,6 +19,6 @@ for i in range(1, n):
     heapq.heappush(rooms, lecture_time[i][1])
     if min_time > lecture_time[i][0]:
         heapq.heappush(rooms, min_time)
-        
+
 
 print(len(rooms))
