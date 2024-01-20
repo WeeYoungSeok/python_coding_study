@@ -1,23 +1,25 @@
-import sys, heapq
+# 행복 유치원
+
+# 이해하기 상당히 빡세고
+# 방법을 찾은 사람들이 대단할뿐이다..
+
+import sys
 
 input = sys.stdin.readline
 
-n = int(input())
+n, k = map(int, input().split())
+st = list(map(int, input().split()))
+diff = []
 
-lecture_time = []
+for i in range(n - 1):
+    diff.append(st[i + 1] - st[i])
 
-for _ in range(n):
-    lecture_time.append(list(map(int, input().split())))
+# 내림차순 정렬시
+diff.sort(reverse=True)
 
-lecture_time.sort(key=lambda x:x[0])
+print(sum(diff[k - 1:n - 1]))
 
-rooms = [lecture_time[0][1]]
+# 오름차순 정렬시
+diff.sort()
 
-for i in range(1, n):
-    min_time = heapq.heappop(rooms)
-    heapq.heappush(rooms, lecture_time[i][1])
-    if min_time > lecture_time[i][0]:
-        heapq.heappush(rooms, min_time)
-        
-
-print(len(rooms))
+print(sum(diff[0:n - k]))
