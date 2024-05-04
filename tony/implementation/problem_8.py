@@ -1,3 +1,4 @@
+# 배열돌리기1 pypy3로 제출
 import sys
 
 input = sys.stdin.readline
@@ -23,14 +24,14 @@ for _ in range(r):
         nx = x
         ny = y
         temp = arr[nx][ny]
-        
+
         # 세로 아래로
         for _ in range(max_x - x):
             if nx + 1 > max_x:
                 break
             arr[nx + 1][ny], temp = temp, arr[nx + 1][ny]
             nx += 1
-            
+
         # 가로 오른쪽으로
         for _ in range(max_y - y):
             arr[nx][ny + 1], temp = temp, arr[nx][ny + 1]
