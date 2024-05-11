@@ -1,3 +1,4 @@
+# 전구
 import sys
 
 input = sys.stdin.readline
