@@ -2,28 +2,10 @@
   "files": {
     "main.py": [
       {
-        "id": "3e43525a-587f-4de3-8610-24b07e80e3ae",
-        "line": 1,
-        "version": 50773,
-        "index": 0
-      },
-      {
-        "id": "2d2cd4aa-6829-42e8-bacf-dff39ec7069d",
-        "line": 1,
-        "version": 50773,
-        "index": 0
-      },
-      {
-        "id": "ee04556d-8fd9-413e-b112-48cd5affe95c",
-        "line": 1,
-        "version": 50773,
-        "index": 0
-      },
-      {
-        "id": "919b1c2d-3948-4dd9-9c1f-56c643f0a1a1",
-        "line": 10,
-        "version": 50773,
-        "index": 117
+        "id": "cffc30aa-fe4a-4b96-859c-839d6b44676e",
+        "line": 36,
+        "version": 53800,
+        "index": 942
       }
     ]
   }
